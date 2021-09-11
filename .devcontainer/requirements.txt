@@ -1,0 +1,2 @@
+# add dependencies here
+-r ../template/requirements.txt
