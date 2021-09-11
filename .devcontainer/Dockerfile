@@ -3,7 +3,7 @@ ARG VARIANT=16
 
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-RUN su node -c "umask 0002 && npm install -g @vue/cli @vue/cli-service-global"
+RUN su node -c "umask 0002 && npm install -g @vue/cli @vue/cli-service-global @vue/cli-init "
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
  && apt-get install -y make build-essential libssl-dev zlib1g-dev \
