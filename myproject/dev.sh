@@ -91,7 +91,7 @@ function dkbuild {
 function dknpminstall {
     CD=$(pwd)
     cd $PROJ_BASE
-    docker run -it --rm -v $(pwd):/app -w /app/frontend -e NODE_ENV=development myproject npm install
+    docker run -it --rm -v $LOCAL_WORKSPACE_FOLDER/myproject:/app -w /app/frontend -e NODE_ENV=development myproject npm install
     exitcode=$?
     cd $CD
     return $exitcode
@@ -109,7 +109,8 @@ function dkpgnginx {
 function dkup {
     CD=$(pwd)
     cd $PROJ_BASE
-    docker-compose -f docker/compose/dev.yaml up
+    docker-compose -f docker/compose/dev.yaml -f ../.devcontainer/docker-compose.yml up
+#    docker-compose -f docker/compose/dev.yaml up
     exitcode=$?
     cd $CD
     return $exitcode
